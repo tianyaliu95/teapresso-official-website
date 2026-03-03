@@ -214,12 +214,16 @@ export default function HomePage() {
           <section className="py-12 md:py-16">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                {/* Left: Video */}
+                {/* Left: Video thumbnail */}
                 <SlideUp>
                   <div className="order-1 lg:order-1 mx-4 md:mx-0">
-                    <VideoPlayer
-                      src="/视频1.mp4"
-                      className="w-full h-[600px] md:h-[828px] shadow-lg rounded-lg"
+                    <Image
+                      src="/thumb1.jpg"
+                      alt="Teapresso video thumbnail"
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto shadow-lg rounded-lg"
+                      priority
                     />
                   </div>
                 </SlideUp>
