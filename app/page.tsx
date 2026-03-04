@@ -218,7 +218,7 @@ export default function HomePage() {
                 <SlideUp>
                   <div className="order-1 lg:order-1 mx-4 md:mx-0">
                     <Image
-                      src="/thumb1.jpg"
+                      src="/thumb_1.jpg"
                       alt="Teapresso video thumbnail"
                       width={1920}
                       height={1080}
