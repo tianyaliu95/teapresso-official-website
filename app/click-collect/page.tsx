@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import ImageCarousel from "../_components/ImageCarousel";
 import VideoPlayer from "../_components/VideoPlayer";
+import StartOrderingForm from "../_components/StartOrderingForm";
 import { SlideUp, FadeIn, SlideLeft, SlideRight } from "../_components/ScrollAnimation";
 
 export const metadata: Metadata = {
@@ -135,9 +136,7 @@ export default function ClickCollectPage() {
                         </p>
                       </div>
                       <a
-                        href="https://www.teapresso.co.uk/s/order?location=11eff9bbb340e1a699353cecef6dbab4"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#start-ordering"
                         className="inline-flex items-center justify-center bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
                       >
                         <span>Order Now</span>
@@ -176,13 +175,7 @@ export default function ClickCollectPage() {
           <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
             Experience the convenience of Click & Collect and enjoy your favorite Teapresso drinks without the wait.
           </p>
-          <a
-            target="_blank"
-            href="https://www.teapresso.co.uk/s/order?location=11eff9bbb340e1a699353cecef6dbab4"
-            className="inline-block bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold mb-12 py-4 px-8 rounded-lg transition-colors duration-200 transform hover:scale-105"
-          >
-            Start Ordering
-          </a>
+          <StartOrderingForm />
         </SlideUp>
       </div>
     </div>

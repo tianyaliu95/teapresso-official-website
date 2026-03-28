@@ -65,7 +65,7 @@ export default function HomePage() {
 
               <SlideUp delay={300}>
                 <h2 className="text-lg md:text-2xl italic font-medium text-[#2e3f3a] mb-10 text-gray-600">
-                  Awaken Your Tea, Espresso's Way
+                  Not Just Tea, Not Just Coffee, Teapresso.
                 </h2>
               </SlideUp>
 
@@ -217,13 +217,17 @@ export default function HomePage() {
                 {/* Left: Video thumbnail */}
                 <SlideUp>
                   <div className="order-1 lg:order-1 mx-4 md:mx-0">
-                    <Image
+                    {/* <Image
                       src="/thumb_1.jpg"
                       alt="Teapresso video thumbnail"
                       width={1920}
                       height={1080}
                       className="w-full h-auto shadow-lg rounded-lg"
                       priority
+                    /> */}
+                    <VideoPlayer
+                      src="/视频1-压缩1.mp4"
+                      className="w-full h-[600px] md:h-[828px] shadow-lg rounded-lg"
                     />
                   </div>
                 </SlideUp>
@@ -257,8 +261,8 @@ export default function HomePage() {
 
           <SlideUp className="text-center py-8 md:py-6 md:pb-20">
             <a
-              href="https://www.teapresso.co.uk/s/order?location=11eff9bbb340e1a699353cecef6dbab4"
-              target="_blank"
+              href="/click-collect"
+              // target="_blank"
               className="inline-block text-zinc-100 bg-[#2e3f3a] font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
             >
               View Our Menu Now

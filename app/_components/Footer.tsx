@@ -5,12 +5,12 @@ const socialIcons = {
   instagram: {
     name: "Instagram",
     icon: "M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5Zm0 1.5h8.5A4.25 4.25 0 0 1 20.5 7.75v8.5a4.25 4.25 0 0 1-4.25 4.25h-8.5A4.25 4.25 0 0 1 3.5 16.25v-8.5A4.25 4.25 0 0 1 7.75 3.5ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 1.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm5.25-.88a1.13 1.13 0 1 1-2.25 0 1.13 1.13 0 0 1 2.25 0Z",
-    href: "https://www.instagram.com/teapresso_mcr"
+    href: "https://www.instagram.com/teapresso.uk?igsh=cHJwZXFpYmNscjQ1"
   },
   tiktok: {
     name: "TikTok",
     icon: "M9 2h3v2.5c.61.55 1.33.93 2.17 1.13A5 5 0 0 0 17 6.5v3a7.5 7.5 0 0 1-5-1.5V16a5 5 0 1 1-5-5v3a2 2 0 1 0 2-2V2Z",
-    href: "https://www.tiktok.com/@teapresso_manchester"
+    href: "https://www.tiktok.com/@teapresso.uk?_r=1&_t=ZN-94wlxI9g1aQ"
   }
 }
 
@@ -35,7 +35,7 @@ export default function Footer() {
 
             <div>
               <div className="text-2xl font-fluffy font-bold tracking-widest text-grey-100">Teapresso 野萃</div>
-              <div className="text-sm text-grey-300 tracking-widest mt-2 italic">Awaken your Tea, Espresso's way.</div>
+              <div className="text-sm text-grey-300 tracking-widest mt-2 italic">Not Just Tea, Not Just Coffee, Teapresso.</div>
             </div>
           </div>
           <div className="flex gap-4 mt-4">

@@ -287,7 +287,7 @@ export default function FranchisingPage() {
                   3. Project Costs
                 </h3>
                 <p className="text-gray-700 leading-relaxed flex-grow">
-                  Varies between USD100,000 - USD200,000 depending on size, locations and other factors.
+                  Varies between USD150,000 - USD250,000 depending on size, locations and other factors.
                 </p>
               </div>
             </SlideUp>
@@ -299,7 +299,7 @@ export default function FranchisingPage() {
                 </h3>
                 <div className="flex-grow">
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    <strong>Royalties:</strong> 2%
+                    <strong>Royalties:</strong> 5%
                   </p>
                 </div>
               </div>

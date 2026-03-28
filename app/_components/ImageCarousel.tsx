@@ -240,9 +240,7 @@ export default function ImageCarousel() {
                                             </p>
                                         </div>
                                         <Link
-                                            href="https://www.teapresso.co.uk/s/order?location=11eff9bbb340e1a699353cecef6dbab4"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                            href="#start-ordering"
                                             className="inline-block bg-white text-[#2e3f3a] hover:bg-gray-100 font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
                                         >
                                             Check Out Our Menu
