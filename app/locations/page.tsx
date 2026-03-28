@@ -9,7 +9,7 @@ const UK_LOCATIONS = [
     hours: "Mon-Sun: 11:00 - 22:00",
     phone: "+44 161 547 1023",
     coordinates: "53.4808,-2.2426", // Manchester coordinates
-    mapUrl: "https://maps.google.com/?q=43+George+St,+Manchester+M1+4AB,+UK"
+    mapUrl: "https://maps.google.com/?q=149-153+Oxford+Rd,+Manchester+M1+7EE,+UK"
   },
   {
     name: "Leeds - 61 The Headrow",
