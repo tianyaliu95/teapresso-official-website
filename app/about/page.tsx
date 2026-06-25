@@ -172,7 +172,7 @@ export default function AboutPage() {
               {/* Right: Image */}
               <SlideUp delay={200}><div className="order-1 lg:order-1">
                 <VideoPlayer
-                  src="/视频3.mp4"
+                  src="/about_us_压缩.mp4"
                   className="w-full h-auto shadow-lg rounded-lg"
                 />
               </div>

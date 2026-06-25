@@ -42,7 +42,7 @@ export default function HomePage() {
         <section className="md:pb-6">
           <div className="max-w-6xl mx-auto">
             <Image
-              src="/home.jpg"
+              src="/home_page.jpg"
               alt="Teapresso Tea Extraction Process"
               width={1920}
               height={600}
@@ -65,7 +65,7 @@ export default function HomePage() {
 
               <SlideUp delay={300}>
                 <h2 className="text-lg md:text-2xl italic font-medium text-[#2e3f3a] mb-10 text-gray-600">
-                  Not Just Tea, Not Just Coffee, Teapresso.
+                  Modern Beverage Shop
                 </h2>
               </SlideUp>
 
@@ -226,7 +226,7 @@ export default function HomePage() {
                       priority
                     /> */}
                     <VideoPlayer
-                      src="/视频1-压缩1.mp4"
+                      src="/home_video_6m.mp4"
                       className="w-full h-[600px] md:h-[828px] shadow-lg rounded-lg"
                     />
                   </div>

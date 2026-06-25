@@ -34,8 +34,8 @@ export default function Footer() {
             </div> */}
 
             <div>
-              <div className="text-2xl font-fluffy font-bold tracking-widest text-grey-100">Teapresso 野萃</div>
-              <div className="text-sm text-grey-300 tracking-widest mt-2 italic">Not Just Tea, Not Just Coffee, Teapresso.</div>
+              <div className="text-2xl font-fluffy font-bold tracking-widest text-grey-100">Teapresso</div>
+              <div className="text-sm text-grey-300 tracking-widest mt-2 italic">Modern Beverage Shop</div>
             </div>
           </div>
           <div className="flex gap-4 mt-4">

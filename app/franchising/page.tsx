@@ -299,7 +299,7 @@ export default function FranchisingPage() {
                 </h3>
                 <div className="flex-grow">
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    <strong>Royalties:</strong> 5%
+                    <strong>Royalties:</strong> 6%
                   </p>
                 </div>
               </div>
@@ -458,7 +458,7 @@ export default function FranchisingPage() {
                           <div className="relative overflow-hidden rounded-xl shadow-2xl max-w-sm mx-auto lg:mx-0">
                             {index === 3
                               ? <VideoPlayer
-                                src="/视频2.mp4"
+                                src="/grand_opening_压缩.mp4"
                                 className="w-full h-full rounded-2xl shadow-2xl object-contain"
                               />
                               :
