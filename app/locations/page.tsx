@@ -2,7 +2,16 @@
 import React from "react";
 import { SlideUp, FadeIn, SlideLeft, SlideRight } from "../_components/ScrollAnimation";
 
-const UK_LOCATIONS = [
+type Location = {
+  name: string;
+  address?: string;
+  hours: string;
+  phone?: string;
+  coordinates?: string;
+  mapUrl?: string;
+};
+
+const UK_LOCATIONS: Location[] = [
   {
     name: "Manchester - The Arthouse",
     address: "149-153 Oxford Rd, Manchester M1 7EE",
@@ -61,7 +70,7 @@ const UK_LOCATIONS = [
   }
 ];
 
-const CA_LOCATIONS = [
+const CA_LOCATIONS: Location[] = [
   {
     name: "GTA",
     address: "505 Hwy 7 #16, Thornhill, ON L3T 7V6",
@@ -80,7 +89,7 @@ const CA_LOCATIONS = [
   }
 ];
 
-const USA_LOCATIONS = [
+const USA_LOCATIONS: Location[] = [
   {
     name: "Orlando",
     address: "Coming Soon",
@@ -174,7 +183,7 @@ export default function LocationsPage() {
 
                   {loc.mapUrl ? (
                     <button
-                      onClick={() => openDirections(loc.mapUrl)}
+                      onClick={() => openDirections(loc.mapUrl!)}
                       className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
                     >
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -245,7 +254,7 @@ export default function LocationsPage() {
 
                   {loc.mapUrl ? (
                     <button
-                      onClick={() => openDirections(loc.mapUrl)}
+                      onClick={() => openDirections(loc.mapUrl!)}
                       className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
                     >
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -316,7 +325,7 @@ export default function LocationsPage() {
 
                   {loc.mapUrl ? (
                     <button
-                      onClick={() => openDirections(loc.mapUrl)}
+                      onClick={() => openDirections(loc.mapUrl!)}
                       className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
                     >
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
