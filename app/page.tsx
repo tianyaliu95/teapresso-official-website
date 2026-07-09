@@ -226,7 +226,7 @@ export default function HomePage() {
                       priority
                     /> */}
                     <VideoPlayer
-                      src="/home_video_6m.mp4"
+                      src="/home_video_3m.mp4"
                       className="w-full h-[600px] md:h-[828px] shadow-lg rounded-lg"
                     />
                   </div>
