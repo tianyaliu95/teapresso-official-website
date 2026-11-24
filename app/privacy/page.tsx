@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "../_components/Header";
 import Footer from "../_components/Footer";
 
@@ -8,9 +9,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-type Block = { heading?: string; text?: string[]; list?: string[] };
+// `contact` is the start of a sentence that ends with a link to the contact form.
+type Block = { heading?: string; text?: string[]; list?: string[]; contact?: string };
 
-// The policy text is unchanged from the previous site; only its presentation is new.
+// The policy text follows the previous site. The postal address and the email address
+// it used to give are replaced by a link to the contact form.
 const SECTIONS: { title: string; blocks: Block[] }[] = [
   {
     title: "What Do We Do With Your Information?",
@@ -36,7 +39,7 @@ const SECTIONS: { title: string; blocks: Block[] }[] = [
       },
       {
         heading: "How to withdraw consent:",
-        text: ["You may withdraw your consent at any time by contacting us at:", "info@tea-presso.com"],
+        contact: "You may withdraw your consent at any time by sending us a message through",
       },
     ],
   },
@@ -121,7 +124,7 @@ const SECTIONS: { title: string; blocks: Block[] }[] = [
   },
   {
     title: "Questions & Contact",
-    blocks: [{ text: ["Teapresso HQ", "info@tea-presso.com"] }],
+    blocks: [{ text: ["Teapresso HQ"], contact: "Send us a message through" }],
   },
 ];
 
@@ -174,6 +177,15 @@ export default function PrivacyPage() {
                         {paragraph}
                       </p>
                     ))}
+                    {block.contact ? (
+                      <p style={BODY}>
+                        {block.contact}{" "}
+                        <Link href="/contact" style={{ color: "inherit", textUnderlineOffset: "3px" }}>
+                          the contact form
+                        </Link>
+                        .
+                      </p>
+                    ) : null}
                     {block.list ? (
                       <ul style={{ ...BODY, paddingLeft: "1.2em", display: "flex", flexDirection: "column", gap: "6px" }}>
                         {block.list.map((item) => (
