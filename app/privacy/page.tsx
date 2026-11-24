@@ -121,7 +121,7 @@ const SECTIONS: { title: string; blocks: Block[] }[] = [
   },
   {
     title: "Questions & Contact",
-    blocks: [{ text: ["Teapresso HQ", "102, The Arthouse, 43 George St, Manchester M1 4AB", "info@tea-presso.com"] }],
+    blocks: [{ text: ["Teapresso HQ", "info@tea-presso.com"] }],
   },
 ];
 
