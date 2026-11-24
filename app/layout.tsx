@@ -1,60 +1,44 @@
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react"
-
-import { Montserrat, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
+import { Jost } from "next/font/google";
 import "./globals.css";
-import Navbar from "./_components/Navbar";
-import Footer from "./_components/Footer";
-import BackToTop from "./_components/BackToTop";
 
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "700"] });
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600"] });
+// The one typeface of the site. Every style refers to it as var(--font-jost).
+const jost = Jost({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500"],
+  variable: "--font-jost",
+  display: "swap",
+});
+
+const SITE_URL = "https://www.tea-presso.com";
+const DESCRIPTION =
+  "Tea, extracted by the cup. Whole-leaf tea lattes, a full matcha series and coffee, in Manchester, Leeds, Glasgow and Toronto.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Teapresso 野萃",
-    template: "Teapresso 野萃"
+    default: "Teapresso — Modern Beverage Shop",
+    template: "%s — Teapresso",
   },
-  description: "Experience the art of freshly brewed tea and coffee at Teapresso 野萃. Modern tea house serving handcrafted beverages, seasonal treats, and premium ingredients in Manchester, Leeds, and Glasgow. Your daily ritual destination.",
-  keywords: [
-    "tea house", "coffee shop", "bubble tea", "milk tea", "freshly brewed tea",
-    "artisan coffee", "Manchester tea house", "Leeds coffee", "Glasgow cafe",
-    "premium tea", "handcrafted beverages", "seasonal treats", "tea ritual",
-    "modern tea house", "specialty drinks", "boba tea", "oolong tea", "matcha"
-  ],
-  authors: [{ name: "Teapresso Team" }],
-  creator: "Teapresso 野萃",
-  publisher: "Teapresso 野萃",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://dessert-web-pi.vercel.app'),
-  alternates: {
-    canonical: '/',
-  },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
-    type: 'website',
-    locale: 'en_GB',
-    url: 'https://dessert-web-pi.vercel.app',
-    title: 'Teapresso 野萃',
-    description: 'Experience the art of freshly brewed tea and coffee at Teapresso 野萃. Modern tea house serving handcrafted beverages and seasonal treats.',
-    siteName: 'Teapresso 野萃',
-    images: [
-      {
-        url: '/home.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Teapresso Modern Tea House',
-      },
-    ],
+    type: "website",
+    locale: "en_GB",
+    url: SITE_URL,
+    siteName: "Teapresso",
+    title: "Teapresso — Modern Beverage Shop",
+    description: DESCRIPTION,
+    images: [{ url: "/images/shops/glasgow-interior.jpg", width: 2000, height: 1139, alt: "Inside a Teapresso shop" }],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Teapresso 野萃',
-    description: 'Experience the art of freshly brewed tea and coffee at Teapresso 野萃.',
-    images: ['/home.jpg'],
+    card: "summary_large_image",
+    title: "Teapresso — Modern Beverage Shop",
+    description: DESCRIPTION,
+    images: ["/images/shops/glasgow-interior.jpg"],
   },
   robots: {
     index: true,
@@ -62,115 +46,55 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
     icon: [
-      { url: '/favicon.png?v=6' },
-      { url: '/favicon-16x16.png?v=6', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png?v=6', sizes: '32x32', type: 'image/png' },
+      { url: "/favicon.png?v=6" },
+      { url: "/favicon-16x16.png?v=6", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png?v=6", sizes: "32x32", type: "image/png" },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png?v=6', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg?v=6', color: '#2e3f3a' },
-    ],
+    apple: [{ url: "/apple-touch-icon.png?v=6", sizes: "180x180", type: "image/png" }],
   },
-  manifest: '/site.webmanifest',
-  category: 'food and drink',
+  manifest: "/site.webmanifest",
+  category: "food and drink",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
+
+// Shown to search engines only. Shops that are open; no phone number or email address.
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Teapresso",
+  description: "Modern beverage shop. Whole-leaf tea extracted by the cup, a matcha series and coffee.",
+  url: SITE_URL,
+  image: `${SITE_URL}/images/shops/glasgow-interior.jpg`,
+  servesCuisine: ["Tea", "Matcha", "Coffee"],
+  acceptsReservations: false,
+  hasMenu: `${SITE_URL}/menu`,
+  sameAs: ["https://www.instagram.com/teapresso.uk/"],
+  address: [
+    { "@type": "PostalAddress", streetAddress: "149–153 Oxford Rd", addressLocality: "Manchester", postalCode: "M1 7EE", addressCountry: "GB" },
+    { "@type": "PostalAddress", streetAddress: "61 The Headrow", addressLocality: "Leeds", postalCode: "LS1 6LR", addressCountry: "GB" },
+    { "@type": "PostalAddress", streetAddress: "100 Byres Rd", addressLocality: "Glasgow", postalCode: "G12 8TA", addressCountry: "GB" },
+  ],
+  openingHours: "Mo-Su 11:00-22:00",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <>
-      <Analytics />
-      <html lang="en-GB">
-        <head>
-          {/* Additional SEO Meta Tags */}
-          <meta name="theme-color" content="#2e3f3a" />
-          <meta name="msapplication-TileColor" content="#2e3f3a" />
-          <meta name="msapplication-config" content="/browserconfig.xml" />
-
-          {/* Preconnect to external domains for performance */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-          {/* Favicon Links - Force Override */}
-          <link rel="shortcut icon" href="/favicon.png?v=6" />
-          <link rel="icon" href="/favicon.png?v=6" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=6" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=6" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=6" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg?v=6" color="#2e3f3a" />
-
-          {/* JSON-LD Structured Data */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Restaurant",
-                "name": "Teapresso 野萃",
-                "alternateName": "Teapresso",
-                "description": "Modern tea house serving handcrafted beverages, seasonal treats, and premium ingredients. Experience the art of freshly brewed tea and coffee.",
-                "url": "https://dessert-web-pi.vercel.app",
-                "logo": "https://dessert-web-pi.vercel.app/logo.png",
-                "image": "https://dessert-web-pi.vercel.app/home.jpg",
-                "priceRange": "££",
-                "servesCuisine": ["Tea", "Coffee", "Beverages", "Light Snacks"],
-                "acceptsReservations": false,
-                "hasMenu": "https://www.teapresso.co.uk/s/order?location=11eff9bbb340e1a699353cecef6dbab4",
-                "telephone": "+44 161 547 1023",
-                "email": "info@tea-presso.com",
-                "sameAs": [
-                  "https://instagram.com/teapresso",
-                  "https://tiktok.com/@teapresso"
-                ],
-                "address": [
-                  {
-                    "@type": "PostalAddress",
-                    "streetAddress": "43 George St, Manchester",
-                    "addressLocality": "Manchester",
-                    "postalCode": "M1 4AB",
-                    "addressCountry": "GB"
-                  },
-                  {
-                    "@type": "PostalAddress",
-                    "streetAddress": "61 The Headrow",
-                    "addressLocality": "Leeds",
-                    "postalCode": "LS1 6LR",
-                    "addressCountry": "GB"
-                  },
-                  {
-                    "@type": "PostalAddress",
-                    "streetAddress": "100 Byres Rd",
-                    "addressLocality": "Glasgow",
-                    "postalCode": "G12 8TA",
-                    "addressCountry": "GB"
-                  }
-                ],
-                "openingHours": "Mo-Su 11:00-22:00",
-                "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
-                "currenciesAccepted": "GBP"
-              })
-            }}
-          />
-        </head>
-        <body className={`${montserrat.className} bg-white min-h-screen flex flex-col`}>
-          <Navbar />
-          <main className="flex-1 w-full">{children}</main>
-          <BackToTop />
-          <Footer />
-        </body>
-      </html>
-    </>
+    <html lang="en-GB">
+      <body className={jost.variable}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }} />
+        {children}
+        <Analytics />
+      </body>
+    </html>
   );
 }

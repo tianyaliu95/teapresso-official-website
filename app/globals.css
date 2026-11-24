@@ -1,72 +1,422 @@
-@import "tailwindcss";
+/* Teapresso — site styles.
+   Pages are styled inline, element by element. This file holds only what inline styles cannot:
+   the page base, the rotating menu on Home (.tp-) and the floating cups on Menu (.mp-). */
 
-:root {
-  --primary: #2e3f3a;
-  --secondary: #f7c873;
-  --background: #fff;
-  --foreground: #222;
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Montserrat', 'Lato', 'Poppins', 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', 'Lato', 'Poppins', 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
-  /* color: var(--primary); */
-  font-weight: 700;
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-jost), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  /* color: var(--primary); */
-  text-decoration: none;
+  color: #111111;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--secondary);
+a:hover {
+  color: #5c5c5a;
 }
 
-@keyframes slide-in-right {
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+/* Rotating menu hero. --u is the one unit everything on the turntable is sized in. */
+.tp-root {
+  container-type: inline-size;
+}
+
+.tp-top {
+  transition: background-color 1.1s ease;
+}
+
+.tp-hero {
+  --u: min(1cqw, 14.4px);
+  position: relative;
+  overflow: hidden;
+  height: max(640px, calc(54*var(--u)));
+  touch-action: pan-y;
+}
+
+.tp-heroin {
+  position: relative;
+  z-index: 2;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: calc(3*var(--u)) clamp(20px,5cqw,64px) 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.tp-toprow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+
+.tp-label {
+  margin: 0;
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5c5c5a;
+}
+
+.tp-copy {
+  pointer-events: auto;
+  width: calc(27*var(--u));
+  display: flex;
+  flex-direction: column;
+}
+
+.tp-names {
+  display: grid;
+  margin-top: calc(2.6*var(--u));
+}
+
+.tp-name {
+  grid-area: 1/1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: opacity 0.55s ease, transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1), visibility 0.55s;
+}
+
+.tp-title {
+  margin: 0;
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 500;
+  font-size: max(34px, calc(4.2*var(--u)));
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: #111111;
+}
+
+.tp-desc {
+  margin: 4px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3a3a38;
+}
+
+.tp-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  align-items: center;
+  margin-top: calc(2*var(--u));
+}
+
+.tp-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: calc(2.4*var(--u));
+}
+
+.tp-arrow {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border: 1px solid #111111;
+  border-radius: 50%;
+  background: transparent;
+  color: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tp-arrow:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+.tp-arrow:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 3px;
+}
+
+.tp-bar {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 1px;
+  background: #c9c9c4;
+}
+
+.tp-barfill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  background: #111111;
+  transition: width 0.8s ease;
+}
+
+.tp-disc {
+  position: absolute;
+  z-index: 1;
+  width: calc(90*var(--u));
+  height: calc(90*var(--u));
+  left: calc(50cqw - 20*var(--u));
+  bottom: calc(-41*var(--u));
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 1.15s cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: transform;
+}
+
+.tp-face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.tp-spoke {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.tp-cupimg {
+  position: absolute;
+  left: calc(50% - 9.455*var(--u));
+  top: calc(-0.48*var(--u));
+  width: calc(18.91*var(--u));
+  height: calc(29*var(--u));
+  max-width: none;
+  transform-origin: 50% 91.3%;
+  transition: transform 0.9s cubic-bezier(0.2, 0.75, 0.2, 1), opacity 0.6s ease;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.tp-num {
+  position: absolute;
+  left: 50%;
+  top: calc(28.1*var(--u));
+  transform: translateX(-50%);
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: #5c5c5a;
+  transition: opacity 0.6s ease;
+}
+
+.tp-hit {
+  position: absolute;
+  left: calc(50% - 4.2*var(--u));
+  top: calc(1.1*var(--u));
+  width: calc(8.4*var(--u));
+  height: calc(25.2*var(--u));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tp-hit:focus-visible {
+  outline: 2px solid #111111;
+  outline-offset: 2px;
+}
+
+@container (max-width:899px) {
+  .tp-hero {
+    --u: min(2.2cqw, 9.6px);
+    height: auto;
+    padding-bottom: calc(51*var(--u));
+  }
+
+  .tp-heroin {
+    padding-top: 26px;
+  }
+
+  .tp-copy {
+    width: auto;
+    max-width: 520px;
+  }
+
+  .tp-title {
+    font-size: 40px;
+  }
+
+  .tp-names {
+    margin-top: 22px;
+  }
+
+  .tp-cta {
+    margin-top: 20px;
+  }
+
+  .tp-nav {
+    margin-top: 20px;
+  }
+
+  .tp-disc {
+    left: calc(50cqw - 45*var(--u));
+  }
+
+  .tp-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .tp-top,
+  .tp-disc,
+  .tp-cupimg,
+  .tp-name,
+  .tp-barfill,
+  .tp-num {
+    transition-duration: 0.01s;
+  }
+}
+
+/* Menu: cups float round the title on two rings. */
+.mp-root {
+  container-type: inline-size;
+}
+
+.mp-stage {
+  position: relative;
+  overflow: hidden;
+  height: max(480px, 56cqw);
+  --rxa: 42cqw;
+  --rya: 18.5cqw;
+  --rxb: 26cqw;
+  --ryb: 11.5cqw;
+  --ca: 11cqw;
+  --cb: 7.4cqw;
+}
+
+.mp-orb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  animation: mp-x 36s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+}
+
+.mp-bob {
+  width: 0;
+  height: 0;
+  animation: mp-y 36s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+}
+
+.mp-a {
+  --rx: var(--rxa);
+  --ry: var(--rya);
+  --c: var(--ca);
+  z-index: 1;
+}
+
+.mp-b {
+  --rx: var(--rxb);
+  --ry: var(--ryb);
+  --c: var(--cb);
+  animation-duration: 27s;
+}
+
+.mp-b .mp-bob {
+  animation-duration: 27s;
+}
+
+.mp-card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--c);
+  height: calc(var(--c)*1.5333);
+  max-width: none;
+  object-fit: contain;
+}
+
+.mp-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2cqw;
+  text-align: center;
+  pointer-events: none;
+}
+
+@keyframes mp-x {
   from {
-    transform: translateX(100%);
-    opacity: 0;
+    transform: translateX(calc(-1*var(--rx)));
   }
+
   to {
-    transform: translateX(0);
-    opacity: 1;
+    transform: translateX(var(--rx));
   }
-}
-.animate-slide-in-right {
-  animation: slide-in-right 0.4s cubic-bezier(0.4,0,0.2,1) both;
 }
 
-@keyframes slide-out-right {
+@keyframes mp-y {
   from {
-    transform: translateX(0);
-    opacity: 1;
+    transform: translateY(calc(-1*var(--ry)));
   }
+
   to {
-    transform: translateX(100%);
-    opacity: 0;
+    transform: translateY(var(--ry));
   }
 }
-.animate-slide-out-right {
-  animation: slide-out-right 0.4s cubic-bezier(0.4,0,0.2,1) both;
+
+@container (max-width:699px) {
+  .mp-stage {
+    height: 172cqw;
+    --rxa: 37cqw;
+    --rya: 66cqw;
+    --rxb: 21cqw;
+    --ryb: 41cqw;
+    --ca: 23cqw;
+    --cb: 16cqw;
+  }
 }
 
-/* Performance optimizations for scroll animations */
-* {
-  scroll-behavior: smooth;
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+@media (prefers-reduced-motion:reduce) {
+  .mp-orb,
+  .mp-bob {
+    animation-play-state: paused;
   }
 }

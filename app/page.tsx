@@ -1,275 +1,221 @@
-import React from "react";
-import Image from "next/image";
-import { Metadata } from "next";
-import { SlideUp, FadeIn } from "./_components/ScrollAnimation";
-import VideoPlayer from "./_components/VideoPlayer";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
+import Turntable from "./_components/Turntable";
+import Film from "./_components/Film";
 
 export const metadata: Metadata = {
-  title: "Teapresso 野萃",
-  description: "Experience the art of freshly brewed tea and coffee at Teapresso 野萃. Modern tea house serving handcrafted beverages, seasonal treats, and premium ingredients in Manchester, Leeds, and Glasgow.",
-  keywords: ["tea house Manchester", "coffee shop Leeds", "bubble tea Glasgow", "freshly brewed tea", "artisan coffee", "modern tea house", "handcrafted beverages"],
-  openGraph: {
-    title: "Teapresso 野萃",
-    description: "Experience the art of freshly brewed tea and coffee at Teapresso 野萃. Your daily ritual destination.",
-    images: ["/home.jpg"],
-  },
+  title: { absolute: "Teapresso — Modern Beverage Shop" },
+  description: "Tea, extracted by the cup. Whole-leaf tea lattes, a full matcha series and coffee, in Manchester, Leeds, Glasgow and Toronto.",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
   return (
-    <>
-      {/* Additional structured data for homepage */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Teapresso 野萃",
-            "description": "Experience the art of freshly brewed tea and coffee at Teapresso 野萃. Modern tea house serving handcrafted beverages and seasonal treats.",
-            "url": "https://teapresso.co.uk",
-            "mainEntity": {
-              "@type": "Restaurant",
-              "name": "Teapresso 野萃",
-              "servesCuisine": ["Tea", "Coffee", "Beverages"],
-              "priceRange": "££"
-            }
-          })
-        }}
-      />
-      <div className="min-h-screen bg-[#FAF8ED]">
-        {/* Hero Banner */}
-        <section className="md:pb-6">
-          <div className="max-w-6xl mx-auto">
-            <Image
-              src="/home_page.jpg"
-              alt="Teapresso Tea Extraction Process"
-              width={1920}
-              height={600}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <div className="max-w-7xl mx-auto lg:px-8 pb-10 bg-[#FAF8ED]">
-          {/* Brand Introduction Section */}
-          <section className="py-12 md:py-24 px-6 md:px-0">
-            <SlideUp className="max-w-4xl mx-auto text-center">
-              <FadeIn delay={200}>
-                <h1 className="text-3xl md:text-6xl font-bold text-[#2e3f3a] mb-10 md:mb-12 tracking-tight">
-                  Teapresso
-                </h1>
-              </FadeIn>
-
-              <SlideUp delay={300}>
-                <h2 className="text-lg md:text-2xl italic font-medium text-[#2e3f3a] mb-10 text-gray-600">
-                  Modern Beverage Shop
-                </h2>
-              </SlideUp>
-
-              <div className="prose prose-lg mx-auto text-gray-700 leading-relaxed">
-                <SlideUp delay={400}>
-                  <p className="text-base md:text-xl mb-8 px-8 bg-[#2e3f3a] text-zinc-100 py-10">
-                    Teapresso is the UK's first premium tea-led brand, now proudly offering both artisan milk tea and specialty coffee.
-                  </p>
-                </SlideUp>
-
-                <SlideUp delay={500}>
-                  <p className="text-base md:text-lg mb-8">
-                    We specialise in freshly brewed milk tea using advanced tea extraction methods, combining the elegance of Eastern tea culture with the comforting richness of British milk tea. Now, with the addition of hand-crafted espresso and coffee drinks, we continue our mission to create a distinctive, high-quality beverage experience.
-                  </p>
-                </SlideUp>
-
-                <SlideUp delay={600}>
-                  <p className="text-base md:text-lg">
-                    Our philosophy is rooted in single-cup extraction, freshly brewed — whether it's a delicate oolong or a bold flat white — celebrating the perfect balance between tradition and innovation in every cup.
-                  </p>
-                </SlideUp>
-              </div>
-            </SlideUp>
-          </section>
-
-          {/* Tea Ritual Section */}
-          <section className="py-16 md:py-24 bg-[#2e3f3a]">
-            <div className="max-w-4xl mx-auto">
-              <SlideUp>
-                <h2 className="text-xl md:text-4xl font-bold text-[#2e3f3a] mb-12 text-center text-[#FAF8ED]">
-                  The birth of a cup of tea is a ritual
-                </h2>
-              </SlideUp>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-6 md:px-0">
-                {[
-                  {
-                    step: "Picking leaves",
-                    description: "Carefully selecting the finest and most complete tea leaves."
-                  },
-                  {
-                    step: "Grinding",
-                    description: "Grinding the tea leaves to the perfect texture."
-                  },
-                  {
-                    step: "Weighing",
-                    description: "Precisely measuring, in order to present the purest flavour."
-                  },
-                  {
-                    step: "Placing tea",
-                    description: "Placing the ground tea powder into the extraction chamber."
-                  },
-                  {
-                    step: "Selecting",
-                    description: "Pressing the desired mode to extract the ideal flavour."
-                  },
-                  {
-                    step: "Extracting",
-                    description: "High-pressure release, allowing the essence of the tea to fully bloom."
-                  },
-                  {
-                    step: "Pouring",
-                    description: "Pouring the freshly extracted tea into the cup, releasing its aroma."
-                  },
-                  {
-                    step: "Tasting",
-                    description: "Sipping and savouring the natural sweetness and layers of aftertaste."
-                  }
-                ].map((item, index) => (
-                  <SlideUp key={index} delay={index * 60}>
-                    <div className="rounded-xl p-6 shadow-sm bg-[#FAF8ED] h-full">
-                      {/* <div className="text-2xl font-bold text-[#2e3f3a] mb-2">{index + 1}</div> */}
-                      <h3 className="text-base font-semibold text-[#2e3f3a] mb-2">{item.step}</h3>
-                      <p className="text-gray-600 text-sm flex flex-grow">{item.description}</p>
-                    </div>
-                  </SlideUp>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Image Section 1 */}
-          <section className="py-16 md:py-16">
-            <SlideUp className="max-w-6xl mx-auto">
-              <Image
-                src="/home_2.png"
-                alt="Teapresso Tea Extraction Process"
-                width={1920}
-                height={600}
-                className="w-full h-auto shadow-lg"
-                priority
-              />
-            </SlideUp>
-          </section>
-
-          {/* Art of Extraction Section */}
-          <section className="py-0 md:py-16">
-            <div className="max-w-4xl mx-auto">
-              <SlideUp>
-                <h2 className="text-2xl md:text-4xl font-bold text-[#2e3f3a] mb-6 text-center">
-                  The Art of Extraction
-                </h2>
-              </SlideUp>
-
-              <div className="space-y-8 px-6 md:px-0">
-                <SlideUp delay={100}>
-                  <div className="bg-[#2e3f3a] rounded-2xl p-8 md:p-12 shadow-lg">
-                    <h3 className="text-lg md:text-3xl font-semibold text-[#FAF8ED] mb-4 italic">
-                      Selection and Grinding
-                    </h3>
-                    <p className="text-sm md:text-lg text-[#FAF8ED] leading-relaxed">
-                      We carefully select high-quality, whole tea leaves, and each leaf is meticulously ground to achieve the ideal texture and taste.
-                    </p>
-                  </div>
-                </SlideUp>
-
-                <SlideUp delay={200}>
-                  <div className="bg-[#2e3f3a] rounded-2xl p-8 md:p-12 shadow-lg">
-                    <h3 className="text-lg md:text-3xl font-semibold text-[#FAF8ED] mb-4 italic">
-                      Measurement and Extraction
-                    </h3>
-                    <p className="text-sm md:text-lg text-[#FAF8ED] leading-relaxed mb-4">
-                      We use high-pressure technology to extract the essence of the tea, layer by layer, to restore the true flavour of the leaves.
-                    </p>
-                    <p className="text-sm md:text-lg text-[#FAF8ED] leading-relaxed">
-                      This craftsmanship preserves the natural sweetness and subtle fragrance of the tea leaves, delicate as silk, with a lingering aroma - each sip is a whisper to the depths of the tea.
-                    </p>
-                  </div>
-                </SlideUp>
-
-                <SlideUp delay={300}>
-                  <div className="bg-[#2e3f3a] rounded-2xl p-8 md:p-12 shadow-lg">
-                    <h3 className="text-lg md:text-3xl font-semibold text-[#FAF8ED] mb-4 italic">
-                      Pouring and Tasting
-                    </h3>
-                    <p className="text-sm md:text-lg text-[#FAF8ED] leading-relaxed">
-                      The freshly extracted tea is gently poured into the cup, and every sip allows you to experience the natural sweetness and long-lasting aftertaste of the tea, letting the aroma bloom on your palate.
-                    </p>
-                  </div>
-                </SlideUp>
-              </div>
-            </div>
-          </section>
-
-          {/* Video and Image Section */}
-          <section className="py-12 md:py-16">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                {/* Left: Video thumbnail */}
-                <SlideUp>
-                  <div className="order-1 lg:order-1 mx-4 md:mx-0">
-                    {/* <Image
-                      src="/thumb_1.jpg"
-                      alt="Teapresso video thumbnail"
-                      width={1920}
-                      height={1080}
-                      className="w-full h-auto shadow-lg rounded-lg"
-                      priority
-                    /> */}
-                    <VideoPlayer
-                      src="/home_video_3m.mp4"
-                      className="w-full h-[600px] md:h-[828px] shadow-lg rounded-lg"
-                    />
-                  </div>
-                </SlideUp>
-
-                {/* Right: Image */}
-                <SlideUp delay={200} className="flex flex-col gap-6 md:gap-11">
-                  <div className="order-2 lg:order-2">
-                    <Image
-                      src="/home_3.png"
-                      alt="Teapresso Tea Experience"
-                      width={1920}
-                      height={600}
-                      className="w-full h-auto shadow-lg rounded-none md:rounded-lg"
-                      priority
-                    />
-                  </div>
-                  <div className="order-2 lg:order-2">
-                    <Image
-                      src="/Teapresso-65.jpg"
-                      alt="Teapresso Tea Experience"
-                      width={1920}
-                      height={600}
-                      className="w-full h-auto shadow-lg rounded-none md:rounded-lg"
-                      priority
-                    />
-                  </div>
-                </SlideUp>
-              </div>
-            </div>
-          </section>
-
-          <SlideUp className="text-center py-8 md:py-6 md:pb-20">
-            <a
-              href="/click-collect"
-              // target="_blank"
-              className="inline-block text-zinc-100 bg-[#2e3f3a] font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-200 transform hover:scale-105"
-            >
-              View Our Menu Now
-            </a>
-          </SlideUp>
-        </div>
+    <div className="tp-root" style={{ width: "100%", background: "#ffffff", color: "#111111", fontFamily: "var(--font-jost), system-ui, sans-serif" }}>
+      {/* Header + rotating menu hero. The ground stays neutral: only the cups and the drinks carry colour. */}
+      <div className="tp-top" style={{ backgroundColor: "#f3f3f1" }}>
+        <Header tint />
+        <Turntable />
       </div>
-    </>
+      {/* Statement, with the film */}
+      <section id="film" style={{ padding: "clamp(64px, 8vw, 120px) clamp(20px, 5vw, 64px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "40px clamp(40px, 6vw, 96px)" }}>
+          <div style={{ flex: "1 1 480px", minWidth: "0", display: "flex", flexDirection: "column", gap: "28px" }}>
+            <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+              Modern Beverage Shop
+            </span>
+            <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(40px, 5.4vw, 80px)", lineHeight: "1", letterSpacing: "-0.02em", color: "#111111" }}>
+              Tea, extracted
+              <br />
+              by the cup.
+            </h2>
+            <p style={{ margin: "0", maxWidth: "30em", fontSize: "16px", lineHeight: "1.65", color: "#3a3a38" }}>
+              Teapresso is a modern tea and coffee house. Our milk teas start as whole leaves, ground, weighed and extracted for each cup. Alongside them: a full matcha series and specialty coffee.
+            </p>
+          </div>
+          <figure style={{ flex: "0 1 400px", minWidth: "0", margin: "0", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <Film />
+            <figcaption style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "6px 16px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+              <span>The film · 0:25</span>
+              <span>Shot at the bar</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      {/* The art of extraction */}
+      <section style={{ background: "#f3f3f1", color: "#111111", padding: "clamp(80px, 10vw, 152px) clamp(20px, 5vw, 64px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "48px clamp(40px, 6vw, 96px)" }}>
+          <div style={{ flex: "0 1 480px", minWidth: "0", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <img src="/images/craft/extraction-pour.jpg" alt="Extracted tea running from the group head into a glass measuring jug" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+            <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+              At the bar — extraction
+            </span>
+          </div>
+          <div style={{ flex: "1 1 420px", minWidth: "0", display: "flex", flexDirection: "column", gap: "40px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                The art of extraction
+              </span>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(32px, 3.6vw, 52px)", lineHeight: "1.05", letterSpacing: "-0.01em" }}>
+                Tea, given the care of espresso.
+              </h2>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", gap: "24px", borderTop: "1px solid #c9c9c4", padding: "22px 0" }}>
+                <span style={{ flex: "0 0 40px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", color: "#5c5c5a", paddingTop: "6px" }}>
+                  01
+                </span>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <h3 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "22px" }}>Selection and grinding</h3>
+                  <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+                    We use whole tea leaves and grind them for each order, so the tea is fresh when it meets the water.
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "24px", borderTop: "1px solid #c9c9c4", padding: "22px 0" }}>
+                <span style={{ flex: "0 0 40px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", color: "#5c5c5a", paddingTop: "6px" }}>
+                  02
+                </span>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <h3 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "22px" }}>Measurement and extraction</h3>
+                  <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+                    Each dose is weighed, then extracted under high pressure in a single-cup chamber, the way a shot of espresso is pulled.
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "24px", borderTop: "1px solid #c9c9c4", borderBottom: "1px solid #c9c9c4", padding: "22px 0" }}>
+                <span style={{ flex: "0 0 40px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", color: "#5c5c5a", paddingTop: "6px" }}>
+                  03
+                </span>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <h3 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "22px" }}>Pouring and tasting</h3>
+                  <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+                    The tea goes straight into your cup: a clean, natural sweetness and a long finish.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Matcha series: its own band, ink ground, so only the drinks carry colour. Every shop serves it; the Matcha Bar is an extra counter. */}
+      <section id="matcha" style={{ background: "#0a0a0a", color: "#f2eee6", padding: "clamp(72px, 9vw, 136px) clamp(20px, 5vw, 64px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "clamp(40px, 5vw, 72px)" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: "32px 64px" }}>
+            <div style={{ flex: "1 1 520px", minWidth: "0", display: "flex", flexDirection: "column", gap: "20px" }}>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#c9c9c4" }}>
+                Matcha series — in every shop
+              </span>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(40px, 5.4vw, 80px)", lineHeight: "1", letterSpacing: "-0.02em", color: "#f2eee6" }}>
+                Matcha, in every
+                <br />
+                Teapresso shop.
+              </h2>
+            </div>
+            <div style={{ flex: "0 1 460px", minWidth: "0", display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.6", color: "#dcdcd8" }}>
+                Next to extracted tea, matcha is the other half of our menu, and every Teapresso shop serves it. Uji matcha, poured in layers over milk, fruit and brown sugar.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px 22px" }}>
+                <Link href="/click-collect" style={{ display: "inline-flex", alignItems: "center", minHeight: "48px", padding: "0 22px", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase", background: "#f2eee6", color: "#0a0a0a" }}>
+                  Order matcha
+                </Link>
+                <Link href="/menu" style={{ display: "inline-flex", alignItems: "center", minHeight: "48px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase", padding: "0", color: "#f2eee6", textDecoration: "underline", textUnderlineOffset: "6px" }}>
+                  See the matcha menu
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(150px, 100%), 1fr))", gap: "40px clamp(10px, 1.4vw, 20px)" }}>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/strawberry-matcha-latte.jpg" alt="Strawberry Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  01 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Strawberry Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/mango-coconut-matcha-latte.jpg" alt="Mango Coconut Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  02 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Mango Coconut Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/ube-matcha-latte.jpg" alt="Ube Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  03 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Ube Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/brown-sugar-boba-matcha-latte.jpg" alt="Brown Sugar Boba Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  04 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Brown Sugar Boba Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/sea-salt-caramel-pistachio-matcha-latte.jpg" alt="Sea Salt Caramel Pistachio Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  05 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Sea Salt Caramel Pistachio Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+            <figure style={{ margin: "0", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <img src="/images/drinks/tiramisu-matcha-latte.jpg" alt="Tiramisu Matcha Latte" style={{ width: "100%", height: "auto", aspectRatio: "4 / 5", objectFit: "cover" }} />
+              <figcaption style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "10px", color: "#c9c9c4" }}>
+                  06 · Matcha
+                </span>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "19px", lineHeight: "1.2", letterSpacing: "-0.01em", color: "#f2eee6" }}>
+                  Tiramisu Matcha Latte
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      {/* Find us: heading, link and one picture. Addresses are on the Locations page. */}
+      <section style={{ background: "#f3f3f1", padding: "clamp(72px, 9vw, 128px) clamp(20px, 5vw, 64px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-end", gap: "40px clamp(40px, 6vw, 96px)" }}>
+          <div style={{ flex: "1 1 340px", minWidth: "0", display: "flex", flexDirection: "column", gap: "16px" }}>
+            <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+              Our locations
+            </span>
+            <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(32px, 3.6vw, 52px)", lineHeight: "1.05", letterSpacing: "-0.01em", color: "#111111" }}>
+              Open daily, 11:00 to 22:00.
+            </h2>
+            <Link href="/locations" style={{ alignSelf: "flex-start", display: "inline-flex", alignItems: "center", minHeight: "48px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", letterSpacing: "0.18em", textTransform: "uppercase", fontSize: "12px", color: "#111111", textUnderlineOffset: "6px" }}>
+              All locations
+            </Link>
+          </div>
+          <img src="/images/shops/glasgow-interior.jpg" alt="Design rendering of the Glasgow shop interior: a black bar and ceiling, a timber beam carrying the Teapresso wordmark, a row of round shelves on a pale wall" style={{ flex: "1.5 1 520px", minWidth: "0", width: "100%", height: "auto", aspectRatio: "2000 / 1139", objectFit: "cover" }} />
+        </div>
+      </section>
+      <Footer />
+    </div>
   );
 }
