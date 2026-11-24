@@ -10,7 +10,6 @@ Crawl-delay: 1
 # Block access to admin areas (if any)
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
 Disallow: /.*
 
 # Allow specific important pages
