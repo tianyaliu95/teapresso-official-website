@@ -1,352 +1,270 @@
-"use client";
-import React from "react";
-import { SlideUp, FadeIn, SlideLeft, SlideRight } from "../_components/ScrollAnimation";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Header from "../_components/Header";
+import Footer from "../_components/Footer";
 
-type Location = {
-  name: string;
-  address?: string;
-  hours: string;
-  phone?: string;
-  coordinates?: string;
-  mapUrl?: string;
+export const metadata: Metadata = {
+  title: "Our Locations",
+  description: "Find your nearest Teapresso: Manchester, Leeds, Glasgow and Toronto, with new shops opening soon. Open daily, 11:00 to 22:00.",
+  alternates: { canonical: "/locations" },
 };
 
-const UK_LOCATIONS: Location[] = [
-  {
-    name: "Manchester - The Arthouse",
-    address: "149-153 Oxford Rd, Manchester M1 7EE",
-    hours: "Mon-Sun: 11:00 - 22:00",
-    phone: "+44 161 547 1023",
-    coordinates: "53.4808,-2.2426", // Manchester coordinates
-    mapUrl: "https://maps.google.com/?q=149-153+Oxford+Rd,+Manchester+M1+7EE,+UK"
-  },
-  {
-    name: "Leeds - 61 The Headrow",
-    address: "61 The Headrow, Leeds LS1 6LR",
-    hours: "Mon-Sun: 11:00 - 22:00",
-    phone: "+44 161 547 1023",
-    coordinates: "53.8008,-1.5491", // Leeds coordinates
-    mapUrl: "https://maps.google.com/?q=61+The+Headrow,+Leeds+LS1+6LR,+UK"
-  },
-  {
-    name: "Glasgow - 100 Byres Rd",
-    address: "100 Byres Rd, Glasgow G12 8TA",
-    hours: "Mon-Sun: 11:00 - 22:00",
-    phone: "+44 161 547 1023",
-    coordinates: "55.8642,-4.2518", // Glasgow coordinates
-    mapUrl: "https://maps.google.com/?q=100+Byres+Rd,+Glasgow+G12+8TA,+UK"
-  },
-  {
-    name: "Manchester - Teapresso Lab",
-    // address: "100 Byres Rd, Glasgow G12 8TA",
-    hours: "Mon-Sun: 11:00 - 22:00",
-    // phone: "+44 161 547 1023",
-    // coordinates: "55.8642,-4.2518", // Glasgow coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Byres+Rd,+Glasgow+G12+8TA,+UK"
-  },
-  {
-    name: "Leeds Victoria",
-    address: "Coming Soon",
-    hours: "Coming soon",
-    // phone: "+44 161 547 1023",
-    // coordinates: "55.8642,-4.2518", // Glasgow coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Byres+Rd,+Glasgow+G12+8TA,+UK"
-  },
-  {
-    name: "Cardiff",
-    address: "Coming Soon",
-    hours: "Coming soon",
-    // phone: "+44 161 547 1023",
-    // coordinates: "55.8642,-4.2518", // Glasgow coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Byres+Rd,+Glasgow+G12+8TA,+UK"
-  },
-  {
-    name: "Edinburgh",
-    address: "Coming Soon",
-    hours: "Coming soon",
-    // phone: "+44 161 547 1023",
-    // coordinates: "55.8642,-4.2518", // Glasgow coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Byres+Rd,+Glasgow+G12+8TA,+UK"
-  }
-];
-
-const CA_LOCATIONS: Location[] = [
-  {
-    name: "GTA",
-    address: "505 Hwy 7 #16, Thornhill, ON L3T 7V6",
-    hours: "Mon-Sun: 11:00 - 22:00",
-    // phone: "+44 161 547 1023",
-    // coordinates: "43.6510,-79.3470", // Toronto coordinates
-    mapUrl: "https://maps.google.com/?q=505+Hwy+7+%2316,+Thornhill,+ON+L3T+7V6,+CA"
-  },
-  {
-    name: "Vancouver",
-    address: "Coming Soon",
-    hours: "Coming soon",
-    // phone: "+44 161 547 1023",
-    // coordinates: "49.2827,-123.1207", // Vancouver coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Robson+St,+Vancouver+V6B+0N9,+CA"
-  }
-];
-
-const USA_LOCATIONS: Location[] = [
-  {
-    name: "Orlando",
-    address: "Coming Soon",
-    hours: "Coming soon",
-    // phone: "+44 161 547 1023",
-    // coordinates: "49.2827,-123.1207", // Vancouver coordinates
-    // mapUrl: "https://maps.google.com/?q=100+Robson+St,+Vancouver+V6B+0N9,+CA"
-  }
-];
-
 export default function LocationsPage() {
-  const openDirections = (mapUrl: string) => {
-    // 检测设备类型，移动设备使用原生地图应用
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      // 移动设备：尝试打开原生地图应用
-      window.open(mapUrl, '_blank');
-    } else {
-      // 桌面设备：打开 Google Maps
-      window.open(mapUrl, '_blank');
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#FAF8ED]">
-      {/* Hero Section */}
-      <div className="bg-[#2e3f3a] text-white py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <FadeIn>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-              Our Locations
+    <div style={{ width: "100%", background: "#ffffff", color: "#111111", fontFamily: "var(--font-jost), system-ui, sans-serif" }}>
+      <Header current="/locations" />
+      {/* Title */}
+      <section style={{ padding: "clamp(56px, 8vw, 120px) clamp(20px, 5vw, 64px) clamp(40px, 5vw, 72px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: "24px 64px" }}>
+          <div style={{ flex: "1 1 560px", minWidth: "0", display: "flex", flexDirection: "column", gap: "20px" }}>
+            <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+              Our locations — 3 countries
+            </span>
+            <h1 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(44px, 5.8vw, 88px)", lineHeight: "1", letterSpacing: "-0.02em" }}>
+              Find your nearest Teapresso.
             </h1>
-          </FadeIn>
-          <SlideUp delay={300}>
-            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
-              Find your nearest Teapresso location and experience the perfect blend of tradition and innovation.
+          </div>
+          <div style={{ display: "flex", gap: "32px", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "40px", letterSpacing: "0", color: "#111111" }}>04</span>
+              <span style={{ color: "#5c5c5a" }}>Open</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontSize: "40px", letterSpacing: "0", color: "#111111" }}>07</span>
+              <span style={{ color: "#5c5c5a" }}>Opening soon</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* United Kingdom */}
+      <section style={{ padding: "0 clamp(20px, 5vw, 64px) clamp(56px, 7vw, 96px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "8px 24px", padding: "16px 0", borderTop: "1px solid #111111", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <span style={{ color: "#111111" }}>01 — United Kingdom</span>
+            <span style={{ color: "#5c5c5a" }}>3 open · 4 opening soon</span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px" }}>Manchester</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Oxford Rd
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              149–153 Oxford Rd
+              <br />
+              Manchester M1 7EE
             </p>
-          </SlideUp>
-        </div>
-      </div>
-
-      {/* Locations Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        {/* UK Locations */}
-        <div className="mb-16">
-          <SlideUp>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#2e3f3a] mb-8 text-center">
-              United Kingdom
-            </h2>
-          </SlideUp>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {UK_LOCATIONS.map((loc, index) => (
-              <SlideUp key={index} delay={index * 200} className="h-full">
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold text-[#2e3f3a] mb-2">
-                        {loc.name}
-                      </h3>
-                      <p className="text-gray-600 text-base leading-relaxed">
-                        {loc.address}
-                      </p>
-                    </div>
-                    <div className="ml-4">
-                      <div className="w-12 h-12 bg-[#2e3f3a] rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 flex-1">
-                    <div className="flex items-center text-sm text-gray-500 min-h-5">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>{loc.hours ?? "Coming soon"}</span>
-                    </div>
-
-                    {/* <div className="flex items-center text-sm text-gray-500">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span>{loc.phone}</span>
-                    </div> */}
-                  </div>
-
-                  {loc.mapUrl ? (
-                    <button
-                      onClick={() => openDirections(loc.mapUrl!)}
-                      className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m-6 3l6-3" />
-                      </svg>
-                      Get Directions
-                    </button>
-                  ) : (
-                    <button
-                      disabled
-                      className="w-full mt-6 bg-gray-300 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center cursor-not-allowed"
-                    >
-                      Coming Soon
-                    </button>
-                  )}
-                </div>
-              </SlideUp>
-            ))}
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              Mon–Sun
+              <br />
+              11:00–22:00
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=149-153+Oxford+Rd+Manchester+M1+7EE" style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px solid #111111", color: "#111111", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Get directions
+            </a>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px" }}>Leeds</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                The Headrow
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              61 The Headrow
+              <br />
+              Leeds LS1 6LR
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              Mon–Sun
+              <br />
+              11:00–22:00
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=61+The+Headrow+Leeds+LS1+6LR" style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px solid #111111", color: "#111111", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Get directions
+            </a>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px" }}>Glasgow</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Byres Road
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              100 Byres Rd
+              <br />
+              Glasgow G12 8TA
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              Mon–Sun
+              <br />
+              11:00–22:00
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=100+Byres+Rd+Glasgow+G12+8TA" style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px solid #111111", color: "#111111", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Get directions
+            </a>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Manchester</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Teapresso Lab
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              City Tower, Manchester
+              <br />
+              New drinks are developed and tested here first.
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              Mon–Sun
+              <br />
+              11:00–22:00
+            </p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Leeds</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Teapresso Matcha Bar
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              Victoria Gate, Leeds
+              <br />
+              A counter for the matcha series. Every Teapresso shop serves the series too.
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Cardiff</h2>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              91 Queen St
+              <br />
+              Cardiff CF10 2BG
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Edinburgh</h2>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              12 Clerk St
+              <br />
+              Edinburgh EH8 9HX
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
           </div>
         </div>
-
-        {/* Canada Locations */}
-        <div className="mb-16">
-          <SlideUp>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#2e3f3a] mb-8 text-center">
-              Canada
-            </h2>
-          </SlideUp>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CA_LOCATIONS.map((loc, index) => (
-              <SlideUp key={index} delay={index * 200} className="h-full">
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold text-[#2e3f3a] mb-2">
-                        {loc.name}
-                      </h3>
-                      <p className="text-gray-600 text-base leading-relaxed">
-                        {loc.address}
-                      </p>
-                    </div>
-                    <div className="ml-4">
-                      <div className="w-12 h-12 bg-[#2e3f3a] rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 flex-1">
-                    <div className="flex items-center text-sm text-gray-500 min-h-5">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>{loc.hours ?? "Coming soon"}</span>
-                    </div>
-
-                    {/* <div className="flex items-center text-sm text-gray-500">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span>{loc.phone}</span>
-                    </div> */}
-                  </div>
-
-                  {loc.mapUrl ? (
-                    <button
-                      onClick={() => openDirections(loc.mapUrl!)}
-                      className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m-6 3l6-3" />
-                      </svg>
-                      Get Directions
-                    </button>
-                  ) : (
-                    <button
-                      disabled
-                      className="w-full mt-6 bg-gray-300 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center cursor-not-allowed"
-                    >
-                      Coming Soon
-                    </button>
-                  )}
-                </div>
-              </SlideUp>
-            ))}
+      </section>
+      {/* Canada */}
+      <section style={{ padding: "0 clamp(20px, 5vw, 64px) clamp(56px, 7vw, 96px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "8px 24px", padding: "16px 0", borderTop: "1px solid #111111", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <span style={{ color: "#111111" }}>02 — Canada</span>
+            <span style={{ color: "#5c5c5a" }}>1 open · 1 opening soon</span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px" }}>Toronto (GTA)</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Thornhill
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              505 Hwy 7 #16
+              <br />
+              Thornhill, ON L3T 7T1
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#3a3a38" }}>
+              Mon–Sun
+              <br />
+              11:00–22:00
+            </p>
+            <a href="https://www.google.com/maps/search/?api=1&query=505+Highway+7+East+Unit+16+Thornhill+ON" style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px solid #111111", color: "#111111", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Get directions
+            </a>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Vancouver</h2>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Address to follow</p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
           </div>
         </div>
-
-        {/* USA Locations */}
-        <div className="mb-16">
-          <SlideUp>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#2e3f3a] mb-8 text-center">
-              USA
-            </h2>
-          </SlideUp>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {USA_LOCATIONS.map((loc, index) => (
-              <SlideUp key={index} delay={index * 200} className="h-full">
-                <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold text-[#2e3f3a] mb-2">
-                        {loc.name}
-                      </h3>
-                      <p className="text-gray-600 text-base leading-relaxed">
-                        {loc.address}
-                      </p>
-                    </div>
-                    <div className="ml-4">
-                      <div className="w-12 h-12 bg-[#2e3f3a] rounded-full flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 flex-1">
-                    <div className="flex items-center text-sm text-gray-500 min-h-5">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>{loc.hours ?? "Coming soon"}</span>
-                    </div>
-
-                    {/* <div className="flex items-center text-sm text-gray-500">
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span>{loc.phone}</span>
-                    </div> */}
-                  </div>
-
-                  {loc.mapUrl ? (
-                    <button
-                      onClick={() => openDirections(loc.mapUrl!)}
-                      className="w-full mt-6 bg-[#2e3f3a] hover:bg-[#2e3f3a]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center hover:cursor-pointer"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 4m0 13V4m-6 3l6-3" />
-                      </svg>
-                      Get Directions
-                    </button>
-                  ) : (
-                    <button
-                      disabled
-                      className="w-full mt-6 bg-gray-300 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center cursor-not-allowed"
-                    >
-                      Coming Soon
-                    </button>
-                  )}
-                </div>
-              </SlideUp>
-            ))}
+      </section>
+      {/* USA */}
+      <section style={{ padding: "0 clamp(20px, 5vw, 64px) clamp(72px, 9vw, 128px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "8px 24px", padding: "16px 0", borderTop: "1px solid #111111", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            <span style={{ color: "#111111" }}>03 — USA</span>
+            <span style={{ color: "#5c5c5a" }}>2 opening soon</span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Lexington</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Kentucky
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>
+              401–407 S Limestone St
+              <br />
+              Lexington, KY
+            </p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: "8px 32px", borderTop: "1px solid #dcdcd8", borderBottom: "1px solid #dcdcd8", padding: "28px 0" }}>
+            <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "4px" }}>
+              <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "34px", color: "#5c5c5a" }}>Orlando</h2>
+              <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5c5c5a" }}>
+                Florida
+              </span>
+            </div>
+            <p style={{ flex: "1 1 280px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Address to follow</p>
+            <p style={{ flex: "0 0 200px", margin: "0", fontSize: "16px", lineHeight: "1.6", color: "#5c5c5a" }}>Hours to follow</p>
+            <span style={{ flex: "0 0 auto", display: "inline-flex", alignItems: "center", minHeight: "44px", padding: "0 18px", border: "1px dashed #b5b5b0", color: "#5c5c5a", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "11px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              Opening soon
+            </span>
           </div>
         </div>
-      </div>
+      </section>
+      {/* Order strip */}
+      <section style={{ background: "#f3f3f1", color: "#111111", padding: "clamp(56px, 7vw, 96px) clamp(20px, 5vw, 64px)" }}>
+        <div style={{ maxWidth: "1320px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "24px 48px" }}>
+          <h2 style={{ margin: "0", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "clamp(28px, 3vw, 44px)", lineHeight: "1.1" }}>
+            Order ahead, collect at the counter.
+          </h2>
+          <Link href="/click-collect" style={{ display: "inline-flex", alignItems: "center", minHeight: "48px", padding: "0 22px", background: "#111111", color: "#ffffff", textDecoration: "none", fontFamily: "var(--font-jost), sans-serif", fontWeight: "500", fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+            {"Click & Collect"}
+          </Link>
+        </div>
+      </section>
+      <Footer />
     </div>
   );
-} 
+}
