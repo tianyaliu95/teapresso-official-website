@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://teapresso.co.uk/sitemap.xml
+Sitemap: https://www.tea-presso.com/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
