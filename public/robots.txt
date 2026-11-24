@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://teapresso.co.uk/sitemap.xml
+Sitemap: https://www.tea-presso.com/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
@@ -10,7 +10,6 @@ Crawl-delay: 1
 # Block access to admin areas (if any)
 Disallow: /admin/
 Disallow: /api/
-Disallow: /_next/
 Disallow: /.*
 
 # Allow specific important pages
